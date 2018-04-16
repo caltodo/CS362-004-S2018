@@ -648,7 +648,7 @@ int getCost(int cardNumber)
 
 int smith(struct gameState *state, int handPos, int currentPlayer){
   int i;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -665,7 +665,7 @@ int adventure(struct gameState *state, int handPos, int currentPlayer, int z, in
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+	if (cardDrawn == copper && cardDrawn == silver && cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -688,7 +688,7 @@ int remode(struct gameState *state, int handPos, int currentPlayer, int j, int c
 	  return -1;
 	}
 
-      gainCard(choice2, state, 0, currentPlayer);
+      gainCard(choice1, state, 0, currentPlayer);
 
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -731,16 +731,7 @@ int stewy(int handPos, struct gameState *state, int currentPlayer, int choice1, 
 	  //+2 coins
 	  state->coins = state->coins + 2;
 	}
-      else
-	{
-	  //trash 2 cards in hand
-	  discardCard(choice2, currentPlayer, state, 1);
-	  discardCard(choice3, currentPlayer, state, 1);
-	}
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+
 }
 	
 
