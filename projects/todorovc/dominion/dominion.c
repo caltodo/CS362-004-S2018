@@ -320,6 +320,8 @@ int handCard(int handPos, struct gameState *state) {
 int supplyCount(int card, struct gameState *state) {
   return state->supplyCount[card];
 }
+//why in sam hill is this not fucking pushing
+//github makes me want to actually fucking kill myself
 
 int fullDeckCount(int player, int card, struct gameState *state) {
   int i;
