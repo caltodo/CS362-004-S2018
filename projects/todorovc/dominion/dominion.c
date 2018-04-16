@@ -646,7 +646,7 @@ int getCost(int cardNumber)
 // This is where it's going down right now
 
 
-int smithy(){
+int smith(struct gameState *state, int handpos){
     for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
@@ -657,7 +657,7 @@ int smithy(){
       return 0;
 }
 
-int adventurer(){
+int adventure(struct gameState *state, int handpos){
 	while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
@@ -679,7 +679,7 @@ int adventurer(){
       return 0;
 }
 
-int remodel(){
+int remode(struct gameState *state, int handpos){
 	      j = state->hand[currentPlayer][choice1];  //store card we will trash
 
       if ( (getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2) )
@@ -706,7 +706,7 @@ int remodel(){
       return 0;
 }
 
-int great_hall(){
+int greathall(struct gameState *state, int handpos){
       //+1 Card
       drawCard(currentPlayer, state);
 			
@@ -717,7 +717,7 @@ int great_hall(){
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
 }
-int steward(){
+int stewy(int handpos, struct gameState *state){
 	if (choice1 == 1)
 	{
 	  //+2 cards
@@ -766,7 +766,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      while(drawntreasure<2){
+    adventure();
+/*       while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -785,7 +786,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	z=z-1;
       }
       return 0;
-			
+			 */
     case council_room:
       //+4 Cards
       for (i = 0; i < 4; i++)
@@ -902,7 +903,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case remodel:
-      j = state->hand[currentPlayer][choice1];  //store card we will trash
+    remode();
+/*       j = state->hand[currentPlayer][choice1];  //store card we will trash
 
       if ( (getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2) )
 	{
@@ -922,13 +924,14 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	      discardCard(i, currentPlayer, state, 0);			
 	      break;
 	    }
-	}
+	} */
 
 
       return 0;
 		
     case smithy:
-      //+3 Cards
+    smith();
+/*       //+3 Cards
       for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
@@ -936,7 +939,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+      return 0; */
 		
     case village:
       //+1 Card
@@ -1001,7 +1004,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case great_hall:
-      //+1 Card
+    greathall();
+/*       //+1 Card
       drawCard(currentPlayer, state);
 			
       //+1 Actions
@@ -1009,7 +1013,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+      return 0; */
 		
     case minion:
       //+1 action
@@ -1063,7 +1067,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case steward:
-      if (choice1 == 1)
+    stewy();
+ /*      if (choice1 == 1)
 	{
 	  //+2 cards
 	  drawCard(currentPlayer, state);
@@ -1084,7 +1089,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
-		
+		 */
     case tribute:
       if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1){
 	if (state->deckCount[nextPlayer] > 0){
