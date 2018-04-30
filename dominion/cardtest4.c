@@ -10,38 +10,9 @@
 #include "structs.h"
 
 
-struct Node {
-	TYPE         val;
-	struct Node *left;
-	struct Node *right;
-};
 
-struct BSTree {
-	struct Node *root;
-	int          cnt;
-};
+void testSteward() {
 
-TYPE _leftMost(struct Node *cur);
-struct Node *_removeLeftMost(struct Node *cur);
-struct Node *_removeNode(struct Node *cur, TYPE val);
-
-void testRemoveNode() {
-    struct BSTree *tree = buildBSTTree();
-    struct Node *cur;
-    struct data myData1;
-	struct data myData2;
-	struct data myData3;
-	struct data myData4;
-		
-	myData1.number = 50;
-	myData1.name = "rooty";
-	myData2.number = 13;
-	myData2.name = "lefty";
-	myData3.number = 110;
-	myData3.name = "righty";
-	myData4.number = 10;
-	myData4.name = "lefty of lefty";
-    
     _removeNode(tree->root, &myData4);
     if (compare(tree->root->val, &myData1) == 0 && tree->root->left->left == NULL)
         printf("_removeNode(): PASS remove left of left of root 1st try\n");
@@ -71,7 +42,7 @@ void testRemoveNode() {
 
 int main(int argc, char *argv[])
 {
-    testRemoveNode();
+    testSteward();
     return 0;
 }
 
