@@ -9,24 +9,10 @@
 #include "bst.h"
 #include "structs.h"
 
-struct Node {
-	TYPE         val;
-	struct Node *left;
-	struct Node *right;
-};
 
-struct BSTree {
-	struct Node *root;
-	int          cnt;
-};
 
-TYPE _leftMost(struct Node *cur);
-struct Node *_removeLeftMost(struct Node *cur);
-struct Node *_removeNode(struct Node *cur, TYPE val);
+void testGreatHall() {
 
-void testRemoveLeftMost() {
-    struct BSTree *tree = buildBSTTree();
-    struct Node *cur;
     
     cur = _removeLeftMost(tree->root);
     if (cur == tree->root)
@@ -51,7 +37,7 @@ void testRemoveLeftMost() {
 
 int main(int argc, char *argv[])
 {	
-    testRemoveLeftMost();
+    testGreatHall();
     return 0;
 }
 
