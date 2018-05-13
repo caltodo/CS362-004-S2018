@@ -18,6 +18,15 @@ badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
+testCard1: testCard1.c dominion.o rngs.o
+	gcc -o testCard1 -g testCard1.c dominion.o rngs.o
+
+testCard2: testCard2.c dominion.o rngs.o
+	gcc -o testCard2 -g testCard2.c dominion.o rngs.o
+
+testCard3: testCard3.c dominion.o rngs.o
+	gcc -o testCard3 -g testCard3.c dominion.o rngs.o
+
 testAll: dominion.o testSuite.c
 	gcc -o testSuite testSuite.c -g  dominion.o rngs.o $(CFLAGS)
 
